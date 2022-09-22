@@ -3,6 +3,13 @@ function loadData() {
         .then(respose => respose.json())
         .then(json => console.log(json))
 }
+
+function loadPost() {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(reponse => reponse.json())
+        .then(postData => console.log(postData))
+}
+
 // call from another function
 function loadUser() {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -11,13 +18,13 @@ function loadUser() {
 }
 
 function displayUsers(data) {
-    console.log(data);
+    const ul = document.getElementById('users');
+    for (const user of data) {
+        const li = document.createElement('li');
+        li.innerText = `User Name : ${user.name} >>>>> Email : ${user.email}`;
+        ul.appendChild(li);
+    }
 }
 
 
-function loadPost() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(reponse => reponse.json())
-        .then(postData => console.log(postData))
-}
 
