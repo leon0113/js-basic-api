@@ -1,45 +1,32 @@
+//!--------------------------------
 function loadData() {
     fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(respose => respose.json())
-        .then(json => console.log(json))
+        .then(response => response.json())
+        .then(data => console.log(data))
 }
+//!--------------------------------
+function loadUsers() {
 
-function loadPost() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(reponse => reponse.json())
-        .then(postData => console.log(postData))
-}
-
-//! call from another function
-function loadUser() {
     fetch('https://jsonplaceholder.typicode.com/users')
-        .then(reponse => reponse.json())
-        .then(data => displayUsers(data))
+        .then(response => response.json())
+        .then(dat => displayUsers(dat))
 }
 
-function displayUsers(data) {
+function displayUsers(users) {
     const ul = document.getElementById('users');
-    for (const user of data) {
+    for (const user of users) {
+        // console.log(user.name)
         const li = document.createElement('li');
-        li.innerText = `User Name : ${user.name} >>>>> Email : ${user.email}`;
+        li.innerText = `User name is : ${user.name}`;
         ul.appendChild(li);
     }
 }
 
+//!---------------------------------
+function loadPosts() {
 
-function loadAddress() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(reponse => reponse.json())
-        .then(data => displayUser(data))
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json())
+        .then(data => console.log(data))
 }
-function displayUser(data) {
-    const ul = document.getElementById('userAddress');
-    for (const user of data) {
-        const li = document.createElement('li');
-        li.innerText = `User location : ${user.address.city}`;
-        ul.appendChild(li);
-    }
-}
-
-
 
